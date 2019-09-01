@@ -8,9 +8,9 @@ import org.jsoup.nodes.Document;
 import com.bokesoft.yes.es.file.FileItem;
 
 /**
- * Ê¹ÓÃJsoup½âÎöhtml
+ * æ–‡æ¡£è§£æç±»
  * 
- * @author ³ÂÈğ
+ * @author rjx
  *
  */
 public class HtmlParser {
