@@ -5,15 +5,15 @@ import java.util.UUID;
 import org.json.JSONObject;
 
 /**
- * ´ú±íÒ»¸öĞèÒª´æÈëESµÄÎÄ¼ş
- * @author ³ÂÈğ
+ * ä»£è¡¨ä¸€ä¸ªéœ€è¦å­˜å…¥ESçš„æ–‡ä»¶
+ * @author rjx
  *
  */
 public class FileItem {
 	private String id;
 	private String path;
 	private String title;
-	private String desc;// ÕªÒª,ÓÃÓÚËÑË÷ÏÔÊ¾ TODO
+	private String desc;// æ‘˜è¦,ç”¨äºæœç´¢æ˜¾ç¤º TODO
 	private String content;
 	
 	public FileItem(String path, String title, String content) {
