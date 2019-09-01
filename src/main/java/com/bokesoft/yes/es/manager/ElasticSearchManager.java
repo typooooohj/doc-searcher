@@ -28,21 +28,21 @@ import com.bokesoft.yes.es.common.Setting;
 import com.bokesoft.yes.es.file.FileItem;
 
 /**
- * ElasticSearch´¦ÀíÀà
+ * ElasticSearchå¤„ç†ç±»
  * 
- * Mapping,¾ÍÊÇ¶ÔË÷Òı¿âÖĞË÷ÒıµÄ×Ö¶ÎÃû¼°ÆäÊı¾İÀàĞÍ½øĞĞ¶¨Òå,
- * ÀàËÆÓÚ¹ØÏµÊı¾İ¿âÖĞ±í½¨Á¢Ê±Òª¶¨Òå×Ö¶ÎÃû¼°ÆäÊı¾İÀàĞÍÄÇÑù,
- * ²»¹ıesµÄmapping±ÈÊı¾İ¿âÁé»îºÜ¶à£¬Ëü¿ÉÒÔ¶¯Ì¬Ìí¼Ó×Ö¶Î¡£
- * Ò»°ã²»ĞèÒªÒªÖ¸¶¨mapping¶¼¿ÉÒÔ£¬ÒòÎªes»á×Ô¶¯¸ù¾İÊı¾İ¸ñÊ½¶¨ÒåËüµÄÀàĞÍ£¬
- * Èç¹ûÄãĞèÒª¶ÔÄ³Ğ©×Ö¶ÎÌí¼ÓÌØÊâÊôĞÔ£¨Èç£º¶¨ÒåÊ¹ÓÃÆäËü·Ö´ÊÆ÷¡¢ÊÇ·ñ·Ö´Ê¡¢ÊÇ·ñ´æ´¢µÈ£©£¬
- * ¾Í±ØĞëÊÖ¶¯Ìí¼Ómapping
+ * Mapping,å°±æ˜¯å¯¹ç´¢å¼•åº“ä¸­ç´¢å¼•çš„å­—æ®µååŠå…¶æ•°æ®ç±»å‹è¿›è¡Œå®šä¹‰,
+ * ç±»ä¼¼äºå…³ç³»æ•°æ®åº“ä¸­è¡¨å»ºç«‹æ—¶è¦å®šä¹‰å­—æ®µååŠå…¶æ•°æ®ç±»å‹é‚£æ ·,
+ * ä¸è¿‡esçš„mappingæ¯”æ•°æ®åº“çµæ´»å¾ˆå¤šï¼Œå®ƒå¯ä»¥åŠ¨æ€æ·»åŠ å­—æ®µã€‚
+ * ä¸€èˆ¬ä¸éœ€è¦è¦æŒ‡å®šmappingéƒ½å¯ä»¥ï¼Œå› ä¸ºesä¼šè‡ªåŠ¨æ ¹æ®æ•°æ®æ ¼å¼å®šä¹‰å®ƒçš„ç±»å‹ï¼Œ
+ * å¦‚æœä½ éœ€è¦å¯¹æŸäº›å­—æ®µæ·»åŠ ç‰¹æ®Šå±æ€§ï¼ˆå¦‚ï¼šå®šä¹‰ä½¿ç”¨å…¶å®ƒåˆ†è¯å™¨ã€æ˜¯å¦åˆ†è¯ã€æ˜¯å¦å­˜å‚¨ç­‰ï¼‰ï¼Œ
+ * å°±å¿…é¡»æ‰‹åŠ¨æ·»åŠ mapping
  * 
- * @author ³ÂÈğ
+ * @author rjx
  *
  */
 public class ElasticSearchManager {
 	
-	// jackson,½«¶ÔÏó×ªjson×Ö·û´®
+	// jackson,å°†å¯¹è±¡è½¬jsonå­—ç¬¦ä¸²
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	public static Client getClient() {
@@ -58,20 +58,20 @@ public class ElasticSearchManager {
 	}
 	
 	/**
-	 * ´´½¨Ë÷Òı,³ÌĞòÆô¶¯Ê±µ÷ÓÃ
-	 * @param indexName Ë÷ÒıÃû³Æ
-	 * @param indexType Ë÷ÒıÀàĞÍ
+	 * åˆ›å»ºç´¢å¼•,ç¨‹åºå¯åŠ¨æ—¶è°ƒç”¨
+	 * @param indexName ç´¢å¼•åç§°
+	 * @param indexType ç´¢å¼•ç±»å‹
 	 * @throws Throwable
 	 */
 	public void createIndex(String indexName,String indexType) {
 		Client client = getClient();
 		try {
-			// Èç¹û´æÔÚ¾ÍÏÈÉ¾³ıË÷Òı
+			// å¦‚æœå­˜åœ¨å°±å…ˆåˆ é™¤ç´¢å¼•
 			if (client.admin().indices().prepareExists(indexName).get().isExists()) {
 				client.admin().indices().prepareDelete(indexName).get();
 			}
 			
-			// ÏÈ´´½¨¿ÕË÷Òı¿â
+			// å…ˆåˆ›å»ºç©ºç´¢å¼•åº“
 			client.admin().indices().prepareCreate(indexName).execute().actionGet();
 			
 			XContentBuilder builder=XContentFactory.jsonBuilder()
@@ -95,7 +95,7 @@ public class ElasticSearchManager {
 	}
 	
 	/**
-	 * É¾³ıË÷Òı¿â
+	 * åˆ é™¤ç´¢å¼•åº“
 	 * @param indexName
 	 */
 	public void deleteIndex(String indexName) {
@@ -105,16 +105,16 @@ public class ElasticSearchManager {
 	}
 	
 	/**
-	 * ĞÂÔöÒ»ÌõÎÄµµ,¼´Ë÷ÒıÖĞµÄÒ»ĞĞ
-	 * @param item ÎÄ¼ş
+	 * æ–°å¢ä¸€æ¡æ–‡æ¡£,å³ç´¢å¼•ä¸­çš„ä¸€è¡Œ
+	 * @param item æ–‡ä»¶
 	 */
 	public void addDoc(FileItem item) {
 		Client client = getClient();		
 		try {
-			String json = mapper.writeValueAsString(item); // ×ª³Éjson
+			String json = mapper.writeValueAsString(item); // è½¬æˆjson
 			IndexResponse response = client.prepareIndex(Setting.INDEX_NAME, Setting.INDEX_TYPE)  
-					.setId("1")     // µ¥¶ÀÖ¸¶¨ID 
-					.setSource(json)  // Ö¸¶¨Êı¾İ 
+					.setId("1")     // å•ç‹¬æŒ‡å®šID 
+					.setSource(json)  // æŒ‡å®šæ•°æ® 
 					.execute()  
 					.actionGet();
 			System.out.println("Doc add success,id:" + response.getId());
@@ -126,8 +126,8 @@ public class ElasticSearchManager {
 	}
 	
 	/**
-	 * ÅúÁ¿ĞÂÔöÎÄ¼şµ½ES
-	 * @param items ÎÄ¼şÁĞ±í
+	 * æ‰¹é‡æ–°å¢æ–‡ä»¶åˆ°ES
+	 * @param items æ–‡ä»¶åˆ—è¡¨
 	 */
 	public void addDocs(List<FileItem> items) {
 		Client client = getClient();		
@@ -140,7 +140,7 @@ public class ElasticSearchManager {
 						.setSource(json);
 				bulkRequest.add(indexRequest);
 			}
-			// ÅúÁ¿²åÈë
+			// æ‰¹é‡æ’å…¥
 			BulkResponse bulkResponse = bulkRequest.execute().actionGet();
 			if( !bulkResponse.hasFailures() ) {
 				System.out.println("docs add success!");				
@@ -155,9 +155,9 @@ public class ElasticSearchManager {
 	}
 	
 	/**
-         *  match query µ¥¸öÆ¥Åä 
-	 * @param name ×Ö¶Î
-	 * @param text ËÑË÷ÎÄ±¾
+         *  match query å•ä¸ªåŒ¹é… 
+	 * @param name å­—æ®µ
+	 * @param text æœç´¢æ–‡æœ¬
 	 * @return
 	 */
 	public List<FileItem> matchQuery(String name, Object text) {
@@ -184,10 +184,10 @@ public class ElasticSearchManager {
 	}
 	
 	/**
-	 *  Ïà¶ÔÓÚmatchQuery£¬multiMatchQueryÕë¶ÔµÄÊÇ¶à¸öfield£¬Ò²¾ÍÊÇËµ,
-	 *  µ±multiMatchQueryÖĞ£¬fieldNames²ÎÊıÖ»ÓĞÒ»¸öÊ±£¬Æä×÷ÓÃÓëmatchQueryÏàµ±;
-	 *  ¶øµ±fieldNamesÓĞ¶à¸ö²ÎÊıÊ±£¬Èçfield1ºÍfield2£¬ÄÇ²éÑ¯µÄ½á¹ûÖĞ£¬
-	 *  ÒªÃ´field1ÖĞ°üº¬text£¬ÒªÃ´field2ÖĞ°üº¬text
+	 *  ç›¸å¯¹äºmatchQueryï¼ŒmultiMatchQueryé’ˆå¯¹çš„æ˜¯å¤šä¸ªfieldï¼Œä¹Ÿå°±æ˜¯è¯´,
+	 *  å½“multiMatchQueryä¸­ï¼ŒfieldNameså‚æ•°åªæœ‰ä¸€ä¸ªæ—¶ï¼Œå…¶ä½œç”¨ä¸matchQueryç›¸å½“;
+	 *  è€Œå½“fieldNamesæœ‰å¤šä¸ªå‚æ•°æ—¶ï¼Œå¦‚field1å’Œfield2ï¼Œé‚£æŸ¥è¯¢çš„ç»“æœä¸­ï¼Œ
+	 *  è¦ä¹ˆfield1ä¸­åŒ…å«textï¼Œè¦ä¹ˆfield2ä¸­åŒ…å«text
 	 * @param text
 	 * @param fieldNames
 	 * @return
@@ -217,7 +217,7 @@ public class ElasticSearchManager {
 	}
 	
 	  /**
-     * Çå³ıES_INDEXÏÂµÄËùÓĞÊı¾İ 
+     * æ¸…é™¤ES_INDEXä¸‹çš„æ‰€æœ‰æ•°æ® 
      */
     public static void clearAllDatas() {
     	
