@@ -3,8 +3,8 @@ package com.bokesoft.yes.es.common;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * ESµÄÈ«¾ÖÉèÖÃ
- * @author ³ÂÈğ
+ * ESçš„å…¨å±€è®¾ç½®
+ * @author rjx
  *
  */
 public class Setting {
@@ -19,10 +19,10 @@ public class Setting {
 	
 	private int port = 9300;
 	
-	// Ë÷ÒıµÄÃû³Æ±ØĞëĞ¡Ğ´
+	// ç´¢å¼•çš„åç§°å¿…é¡»å°å†™
 	public static String INDEX_NAME = "yigo";
 	
-	// Ë÷ÒıµÄÀàĞÍ±ØĞëĞ¡Ğ´
+	// ç´¢å¼•çš„ç±»å‹å¿…é¡»å°å†™
 	public static String INDEX_TYPE = "coc";
 	
 	private static Setting instance;
