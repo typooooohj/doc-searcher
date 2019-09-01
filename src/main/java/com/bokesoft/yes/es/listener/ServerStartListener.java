@@ -6,8 +6,8 @@ import javax.servlet.ServletContextListener;
 import com.bokesoft.yes.es.common.Setting;
 
 /**
- * Æô¶¯¼àÌıÆ÷
- * @author ³ÂÈğ
+ * æœåŠ¡å™¨å¯åŠ¨æ‰§è¡Œ
+ * @author rjx
  *
  */
 public class ServerStartListener implements ServletContextListener {
