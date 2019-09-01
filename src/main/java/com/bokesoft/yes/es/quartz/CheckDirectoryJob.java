@@ -4,9 +4,9 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 /**
- * 定时检查制定目录并对索引做增删改查
+ * 瀹氭椂妫�鏌ュ埗瀹氱洰褰曞苟瀵圭储寮曞仛澧炲垹鏀规煡
  * 
- * @author 陈瑞
+ * @author rjx
  *
  */
 public class CheckDirectoryJob implements Job {
