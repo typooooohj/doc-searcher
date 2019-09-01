@@ -14,9 +14,9 @@ import org.json.JSONObject;
 import com.bokesoft.yes.es.file.FileItem;
 import com.bokesoft.yes.es.manager.ElasticSearchManager;
 /**
- * 接受搜索请求的Servlet
+ * 鎼滅储鐨凷ervlet
  * 
- * @author 陈瑞
+ * @author rjx
  *
  */
 public class DocSearchServlet extends HttpServlet {
