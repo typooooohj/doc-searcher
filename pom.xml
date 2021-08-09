@@ -7,7 +7,7 @@
   <name>yes-doc-search</name>
   
   <properties>
-     <elasticsearch.version>2.4.2</elasticsearch.version>
+     <elasticsearch.version>6.8.17</elasticsearch.version>
      <quartz.version>2.2.1</quartz.version>
      <jackson.version>1.9.4</jackson.version>
      <servlet.version>2.5</servlet.version>
